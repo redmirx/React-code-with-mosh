@@ -5,6 +5,6 @@ import Counter from "./Components/counter";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Counter></Counter>
+    <Counter />
   </React.StrictMode>
 );
