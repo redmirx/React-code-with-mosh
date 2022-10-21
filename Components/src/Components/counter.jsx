@@ -5,14 +5,26 @@ class Counter extends Component {
   state = {
     count: 0,
     imgUrl: "https://picsum.photos/200",
+    tags: ["tag1", "tag2", "tag3"],
   };
 
   render() {
+    const handleIncrement = () => {
+      this.setState({ count: this.state.count + 1 });
+    };
+
     return (
       <React.Fragment>
         {/* <img src={this.state.imgUrl} alt="" /> */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
+        <button className="btn btn-secondary btn-sm" onClick={handleIncrement}>
+          Increment
+        </button>
+        {/* <ul>
+          {this.state.tags.map((tag) => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul> */}
       </React.Fragment>
     );
   }
