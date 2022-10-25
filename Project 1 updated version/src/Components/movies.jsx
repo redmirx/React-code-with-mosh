@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
 import "bootstrap/dist/css/bootstrap.css";
-import { Collapse } from "bootstrap";
+// import { Collapse } from "bootstrap";
 import Like from "./common/like";
 class Movies extends Component {
   state = {
