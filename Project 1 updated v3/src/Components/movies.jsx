@@ -3,9 +3,16 @@ import { getMovies } from "../services/fakeMovieService";
 import "bootstrap/dist/css/bootstrap.css";
 // import { Collapse } from "bootstrap";
 import Like from "./common/like";
+import Pagination from "./common/pagination";
 class Movies extends Component {
   state = {
     movies: getMovies(),
+    pageSize: 4,
+  };
+
+  handleDelete = (movieID) => {
+    let filtedData = this.state.movies.filter((value) => value._id !== movieID);
+    this.setState({ movies: filtedData });
   };
 
   handleLike = (movie) => {
@@ -17,15 +24,13 @@ class Movies extends Component {
     this.setState({ movies });
   };
 
-  render() {
-    const onDeleteHandler = (movieID) => {
-      let filtedData = this.state.movies.filter(
-        (value) => value._id !== movieID
-      );
-      this.setState({ movies: filtedData });
-    };
+  handlePageChange = (page) => {
+    console.log(page);
+  };
 
-    if (this.state.movies.length === 0) {
+  render() {
+    const { length: count } = this.state.movies;
+    if (count === 0) {
       return <p>There are no movies in the database.</p>;
     }
     return (
@@ -58,7 +63,7 @@ class Movies extends Component {
                 <td>
                   <button
                     className="btn btn-danger btn-sm"
-                    onClick={() => onDeleteHandler(movie._id)}
+                    onClick={() => this.handleDelete(movie._id)}
                   >
                     Delete
                   </button>
@@ -67,6 +72,11 @@ class Movies extends Component {
             ))}
           </tbody>
         </table>
+        <Pagination
+          itemsCount={count}
+          pageSize={this.state.pageSize}
+          onPageChange={() => this.handlePageChange()}
+        />
       </React.Fragment>
     );
   }
