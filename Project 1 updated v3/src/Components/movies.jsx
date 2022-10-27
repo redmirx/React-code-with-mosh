@@ -4,6 +4,8 @@ import "bootstrap/dist/css/bootstrap.css";
 // import { Collapse } from "bootstrap";
 import Like from "./common/like";
 import Pagination from "./common/pagination";
+import { paginate } from "../Utils/paginate";
+
 class Movies extends Component {
   state = {
     movies: getMovies(),
@@ -31,10 +33,12 @@ class Movies extends Component {
 
   render() {
     const { length: count } = this.state.movies;
-    const { pageSize, currentPage } = this.state;
+    const { pageSize, currentPage, movies: allMovies } = this.state;
     if (count === 0) {
       return <p>There are no movies in the database.</p>;
     }
+
+    const movies = paginate(allMovies, currentPage, pageSize);
     return (
       <React.Fragment>
         <p>Showing {this.state.movies.length} movies in the database</p>
@@ -50,7 +54,7 @@ class Movies extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.movies.map((movie) => (
+            {movies.map((movie) => (
               <tr key={movie._id} className="">
                 <td className="badge bg-primary ">{movie.title}</td>
                 <td>{movie.genre.name}</td>
