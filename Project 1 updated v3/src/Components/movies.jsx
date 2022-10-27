@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Like from "./common/like";
 import Pagination from "./common/pagination";
 import { paginate } from "../Utils/paginate";
+import PropTypes from "prop-types";
 
 class Movies extends Component {
   state = {
@@ -88,5 +89,12 @@ class Movies extends Component {
     );
   }
 }
+
+Pagination.propTypes = {
+  itemsCount: PropTypes.number.isRequired,
+  pageSize: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
+};
 
 export default Movies;
