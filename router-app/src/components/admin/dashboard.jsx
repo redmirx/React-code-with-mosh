@@ -1,18 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import SideBar from "./sidebar";
+import { Route } from "react-router-dom";
+import Users from "./users";
+import Posts from "./../posts";
 
 const Dashboard = ({ match }) => {
   return (
     <div>
       <h1>Admin Dashboard</h1>
-      <ul>
-        <li>
-          <Link to="/admin/posts"></Link>
-        </li>
-        <li>
-          <Link to="/admin/users"></Link>
-        </li>
-      </ul>
+      <SideBar />
+      <Route path="/admin/users" component={Users} />
+      <Route path="/admin/posts" component={Posts} />
     </div>
   );
 };
