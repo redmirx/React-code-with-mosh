@@ -7,7 +7,6 @@ import Home from "./components/home";
 import Dashboard from "./components/admin/dashboard";
 import ProductDetails from "./components/productDetails";
 import NotFound from "./components/notFound";
-import "./App.css";
 
 class App extends Component {
   render() {
