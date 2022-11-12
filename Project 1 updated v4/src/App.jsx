@@ -8,17 +8,18 @@ import NavBar from "./Components/navBar";
 
 const App = () => {
   return (
-    <
+    <React.Fragment>
       <NavBar />
-    <main className="container">
-      <Routes>
-        <Route path="/movies" element={<Movies />}></Route>
-        <Route path="/customers" element={<Customers />}></Route>
-        <Route path="/rentals" element={<Rentals />}></Route>
-        <Route path="/" element={<Navigate to={"/movies"} />}></Route>
-        <Route path="*" element={<NotFound />}></Route>
-      </Routes>
-    </main>
+      <main className="container">
+        <Routes>
+          <Route path="/movies" element={<Movies />}></Route>
+          <Route path="/customers" element={<Customers />}></Route>
+          <Route path="/rentals" element={<Rentals />}></Route>
+          <Route path="/" element={<Navigate to={"/movies"} />}></Route>
+          <Route path="*" element={<NotFound />}></Route>
+        </Routes>
+      </main>
+    </React.Fragment>
   );
 };
 
